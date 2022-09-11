@@ -1,7 +1,7 @@
 # Episode 8 : let & const in JS, Temporal Dead Zone
 
 * let and const declarations are hoisted. But its different from **var**
-    ```js
+    <Code language="javascript">
     console.log(a); // ReferenceError: Cannot access 'a' before initialization
     console.log(b); // prints undefined as expected
     let a = 10;
@@ -9,7 +9,7 @@
     var b = 15;
     console.log(window.a); // undefined
     console.log(window.b); // 15
-    ```
+   </Code>
   It looks like let isn't hoisted, **but it is**, let's understand
   * Both a and b are actually initialized as *undefined* in hoisting stage. But var **b** is inside the storage space of GLOBAL, and **a** is in a separate memory object called script, where it can be accessed only after assigning some value to it first ie. one can access 'a' only if it is assigned. Thus, it throws error.
 
@@ -23,16 +23,16 @@
 
 * **Syntax Error** doesn't even let us run single line of code.
 
-    * ```js
+    * <Code language="javascript">
         let a = 10;
         let a = 100;  //this code is rejected upfront as SyntaxError. (duplicate declaration)
         ------------------
         let a = 10;
         var a = 100; // this code also rejected upfront as SyntaxError. (can't use same name in same scope)
-        ```
+        </Code>
 
 * **Let** is a stricter version of **var**. Now, **const** is even more stricter than **let**.
-    ```js
+    <Code language="javascript">
     let a;
     a = 10;
     console.log(a) // 10. Note declaration and assigning of a is in different lines.
@@ -43,7 +43,7 @@
     ------------------
     const b = 100;
     b = 1000; //this gives us TypeError: Assignment to constant variable. 
-    ```
+    </Code>
 
 * Types of **Error**: Syntax, Reference, and Type.
 

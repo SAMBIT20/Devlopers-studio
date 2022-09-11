@@ -2,7 +2,7 @@
 
 > **Time, tide and Javascript wait for none.**
 
-*   ```js
+*   <Code language="javascript">
     function x() {
         var i = 1;
         setTimeout(function() {
@@ -14,7 +14,7 @@
     // Output:
     // Namaste Javascript
     // 1 // after waiting 3 seconds
-    ```
+    </Code>
     * We expect JS to wait 3 sec, print 1 and then go down and print the string. But JS prints string immediately, waits 3 sec and then prints 1.
     * The function inside setTimeout forms a closure (remembers reference to i). So wherever function goes it carries this ref along with it. 
     * setTimeout takes this callback function & attaches timer of 3000ms and stores it. Goes to next line without waiting and prints string. 
@@ -23,7 +23,7 @@
 * Q: Print 1 after 1 sec, 2 after 2 sec till 5 : Tricky interview question
  
     We assume this has a simple approach as below
-    ```js
+    <Code language="javascript">
     function x() {
     for(var i = 1; i<=5; i++){
         setTimeout(function() {
@@ -40,15 +40,14 @@
     // 6
     // 6
     // 6
-    ```
+   </Code>
     * Reason?
         * This happens because of closures. When setTimeout stores the function somewhere and attaches timer to it, the function remembers its reference to i, **not value of i**. All 5 copies of function point to same reference of i. JS stores these 5 functions, prints string and then comes back to the functions. By then the timer has run fully. And due to looping, the i value became 6. And when the callback fun runs the variable i = 6. So same 6 is printed in each log
         
         * To avoid this, we can use **let** instead of **var** as let has Block scope. For each iteration, the i is a new variable altogether(new copy of i). Everytime setTimeout is run, the inside function forms closure with new variable i
 
     * But what if interviewer ask us to implement using **var**?
- 
-        ```js
+        <Code language="javascript">
         function x() {
             for(var i = 1; i<=5; i++){
             function close(i) {
@@ -62,7 +61,7 @@
             console.log("Namaste Javascript");
         }
         x();
-        ```
+        </Code>
  
 <hr>
 

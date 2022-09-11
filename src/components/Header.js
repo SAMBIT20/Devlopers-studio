@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { ThemeContext } from "../App";
 import { LogoIcon, MoonIcon, SunIcon } from "./assets/icons";
 
@@ -9,11 +10,15 @@ const Header = () => {
     <header className="header">
       <div className="container">
         <div className="logo-wrapper">
-          <div className="logo">
+          <Link to={"/"} className="logo">
             <LogoIcon />
-            <span>Devloperstudio</span>
-          </div>
-          <button onClick={() => setIsDark(!isDark)} className="icon">{isDark ? <MoonIcon /> : <SunIcon />}</button>
+            <span>
+              Devloperstudio
+            </span>
+          </Link>
+          <button onClick={() => setIsDark(!isDark)} className="icon">
+            {isDark ? <MoonIcon /> : <SunIcon />}
+          </button>
         </div>
       </div>
     </header>

@@ -1,6 +1,6 @@
 # Episode 4 : Functions and Variable Environments
 
-```js
+<Code language="javascript">
 var x = 1;
 a();
 b(); // we are calling the functions before defining them. This will work properly, as seen in Hoisting.
@@ -15,7 +15,7 @@ function b() {
   var x = 100;
   console.log(x); // 2
 }
-```
+</Code>
 
 Outputs:
 
@@ -49,7 +49,7 @@ Outputs:
 
 * reference:
 
-![Execution Context Phase 1](../assets/function.jpg "Execution Context")
+![Execution Context Phase 1](https://raw.githubusercontent.com/ZETRACX/devloper-studio-assets/main/assets/function.jpg "Execution Context")
 
 <hr>
 

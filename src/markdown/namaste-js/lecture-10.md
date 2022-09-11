@@ -3,7 +3,7 @@
 * Function bundled along with it's lexical scope is **closure**.
 
 * JavaScript has a lexcial scope environment. If a function needs to access a variable, it first goes to its local memory. When it does not find it there, it goes to the memory of its lexical parent. See Below code, Over here function **y** along with its lexical scope i.e. (function x) would be called a closure.
-    ```js
+    <Code language="javascript">
     function x() {
         var a = 7;
         function y() {
@@ -13,7 +13,7 @@
     }
     var z = x();
     console.log(z);  // value of z is entire code of function y.
-    ```
+    </Code>
     * In above code, When y is returned, not only is the function returned but the entire closure (fun y + its lexical scope) is returned and put inside z. So when z is used somewhere else in program, it still remembers var a inside x()
 
 * Thus In simple words, we can say:
@@ -22,7 +22,7 @@
 
 <br>
 
-* ![Closure Explaination](../assets/closure.jpg "Lexical Scope")
+* ![Closure Explaination](https://raw.githubusercontent.com/ZETRACX/devloper-studio-assets/main/assets/closure.jpg "Lexical Scope")
 
 * Advantages of Closure:
   * Module Design Pattern

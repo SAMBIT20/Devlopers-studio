@@ -3,7 +3,7 @@
 * **Scope** in Javascript is directly related to **Lexical Environment**.
 
 * Let's observe the below examples:
-```js
+<Code language="javascript">
 // CASE 1
 function a() {
     console.log(b); // 10
@@ -11,9 +11,9 @@ function a() {
 }
 var b = 10;
 a();
-```
+</Code>
 
-```js
+<Code language="javascript">
 // CASE 2
 function a() {
     c();
@@ -23,9 +23,9 @@ function a() {
 }
 var b = 10;
 a();
-```
+</Code>
 
-```js
+<Code language="javascript">
 // CASE 3
 function a() {
     c();
@@ -36,9 +36,9 @@ function a() {
 }
 var b = 10;
 a();
-```
+</Code>
 
-```js
+<Code language="javascript">
 // CASE 4
 function a() {
     var b = 10;
@@ -49,7 +49,7 @@ function a() {
 }
 a();
 console.log(b); // Error, Not Defined
-```
+</Code>
 
 * Let's try to understand the output in each of the cases above.
   * In **case 1**: function a is able to access variable b from Global scope.
@@ -77,24 +77,24 @@ console.log(b); // Error, Not Defined
 
 * The process of going one by one to parent and checking for values is called scope chain or Lexcial environment chain.
 
-* ```js
+* <Code language="javascript">
   function a() {
       function c() {
           // logic here
       }
       c(); // c is lexically inside a
   } // a is lexically inside global execution
-  ```
+</Code>
 
 * Lexical or Static scope refers to the accessibility of variables, functions and object based on phylical location in source code.
-    ```js
+    <Code language="javascript">
     Global {
         Outer {
             Inner
         }
     }
     // Inner is surrounded by lexical scope of Outer
-    ```
+    </Code>
 
 
 * **TLDR**; An inner function can access variables which are in outer functions even if inner function is nested deep. In any other case, a function can't access variables not in its scope.

@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 
 const Post = () => {
   const [postContent, setPostContent] = useState("");
+  const [active, setActive] = useState(0);
   const { isDark } = useContext(ThemeContext);
   const location = useLocation();
   const data = location.state?.data;
@@ -29,9 +30,9 @@ const Post = () => {
         <h3 className="side-bar-title">All Topics 👨🏻‍💻</h3>
         {data.map((data) => (
           <div
-            onClick={() => setActiveArticle(`${data.path}`)}
+            onClick={() => setActiveArticle(`${data.path}`, setActive(data.id))}
             style={{ cursor: "pointer" }}
-            className="side-bar-content"
+            className={active === data.id ? "active" : "side-bar-content"}
           >
             {data.title}
           </div>

@@ -2,7 +2,7 @@
 
 What is a **Block**?
 * Block aka *compound statement* is used to group JS statements together into 1 group. We group them within {...}
-    ```js
+   <Code language="javascript">
     {
         var a = 10;
         let b = 20;
@@ -10,10 +10,10 @@ What is a **Block**?
         // Here let and const are hoisted in Block scope,
         // While, var is hoisted in Global scope.
     }
-    ```
+   </Code>
 
 * Block Scope and its accessibility example
-    ```js
+    <Code language="javascript">
     {
         var a = 10;
         let b = 20;
@@ -21,7 +21,7 @@ What is a **Block**?
     }
     console.log(a); // 10
     console.log(b); // Uncaught ReferenceError: b is not defined
-    ```
+    </Code>
     * Reason?
         * In the BLOCK SCOPE; we get b and c inside it initialized as *undefined* as a part of hoisting (in a seperate memory space called **block**)
         * While, a is stored inside a GLOBAL scope. 
@@ -30,7 +30,7 @@ What is a **Block**?
 
 What is **Shadowing**?
 
-* ```js
+* <Code language="javascript">
     var a = 100;
     {
         var a = 10; // same name as global var
@@ -41,12 +41,12 @@ What is **Shadowing**?
         console.log(c); // 30 
     }
     console.log(a); // 10, instead of the 100 we were expecting. So block "a" modified val of global "a" as well. In console, only b and c are in block space. a initially is in global space(a = 100), and when a = 10 line is run, a is not created in block space, but replaces 100 with 10 in global space itself. 
-    ```
+    </Code>
 
 * So, If one has same named variable outside the block, the variable inside the block *shadows* the outside variable. **This happens only for var**
 
 * Let's observe the behaviour in case of let and const and understand it's reason.
-    ```js
+    <Code language="javascript">
     let b = 100;
     {
         var a = 10;
@@ -55,12 +55,12 @@ What is **Shadowing**?
         console.log(b); // 20
     }
     console.log(b); // 100, Both b's are in separate spaces (one in Block(20) and one in Script(another arbitrary mem space)(100)). Same is also true for *const* declarations.
-    ```
-    ![Block Scope Explaination](../assets/scope.jpg "Lexical Scope")
+    </Code>
+    ![Block Scope Explaination](https://raw.githubusercontent.com/ZETRACX/devloper-studio-assets/main/assets/scope.jpg "Lexical Scope")
 
 
 * Same logic is true even for **functions**
-    ```js
+    <Code language="javascript">
     const c = 100;
     function x() {
         const c = 10;
@@ -68,26 +68,26 @@ What is **Shadowing**?
     }
     x();
     console.log(c); // 100
-    ```
+    </Code>
 
 What is **Illegal Shadowing**?
 
-* ```js
+* <Code language="javascript">
     let a = 20;
     {
         var a = 20;
     }
     // Uncaught SyntaxError: Identifier 'a' has already been declared
-    ```
+    </Code>
     * We cannot shadow let with var. But it is **valid** to shadow a let using a let. However, we can shadow var with let.
     * All scope rules that work in function are same in arrow functions too.
     * Since var is function scoped, it is not a problem with the code below.
-        ```js
+        <Code language="javascript">
         let a = 20;
         function x() {
             var a = 20;
         }
-        ```
+        </Code>
 
 
 

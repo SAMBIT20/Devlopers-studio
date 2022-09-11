@@ -74,7 +74,7 @@ setTimeout(function () {
         }
         attachEventList();
         ```
-        ![Event Listerner Demo](../assets/event.jpg)
+        ![Event Listerner Demo](https://raw.githubusercontent.com/ZETRACX/devloper-studio-assets/main/assets/event.jpg)
 
 ### Garbage Collection and removeEventListeners
 
