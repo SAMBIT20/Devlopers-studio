@@ -135,3 +135,31 @@ header .logo span {
   padding-bottom: 10px;
   padding-left: 20px;
 }
+
+
+.Footer{
+  margin: 4rem;
+  border-top: 1px solid rgba(227, 226, 226, 0.364);
+  padding-top: 20px;
+}
+
+.footer-left{
+  color: #6870AF;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.footer-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.footer-link{
+margin-left: 25px;
+color: #fff;
+}
+
+.footer-link :hover{
+  color: #FFCC68;
+}

@@ -11,15 +11,24 @@ export const CardData = [
   },
   {
     id: 2,
-    name: "React Interview Questions ",
+    name: "Frontend Interview",
     notes: react,
     path: "react-interviews",
-    author: "Sam Nanda",
+    author: "Roadside Coder",
     image:
       "https://raw.githubusercontent.com/ZETRACX/devloper-studio-assets/main/icons/jotai.webp",
   },
   {
     id: 3,
+    name: "Typescript",
+    notes: react,
+    path: "react-interviews",
+    author: "Hitesh Choudhary",
+    image:
+      "https://raw.githubusercontent.com/ZETRACX/devloper-studio-assets/main/icons/typescript.webp",
+  },
+  {
+    id: 4,
     name: "🛁 Clean Code JavaScript",
     notes: cleanjs,
     path: "clean-js",

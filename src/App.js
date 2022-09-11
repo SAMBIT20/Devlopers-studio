@@ -2,6 +2,7 @@ import { createContext, useState } from "react";
 import Home from "./pages/Home";
 import { Routes, Route } from "react-router-dom";
 import Tutorials from "./pages/Tutorials";
+import Footer from "./components/Footer";
 
 // Create Context
 export const ThemeContext = createContext();
@@ -21,6 +22,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/tutorials" element={<Tutorials />} />
         </Routes>
+        <Footer/>
       </div>
     </ThemeContext.Provider>
   );
