@@ -25,7 +25,7 @@ const Post = () => {
   }, [activeArticle, path]);
 
   return (
-    <article className={isDark ? "article" : "article-light"}>
+    <article className={isDark ? "article" : "article article-light"}>
       <div className={"side-bar"}>
         <h3 className="side-bar-title">All Topics 👨🏻‍💻</h3>
         {data.map((data) => (

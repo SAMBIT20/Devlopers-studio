@@ -16,10 +16,12 @@ function App() {
 
   return (
     <ThemeContext.Provider value={value}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/tutorials" element={<Tutorials />} />
-      </Routes>
+      <div className={isDark ? "dark" : "light-body"}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/tutorials" element={<Tutorials />} />
+        </Routes>
+      </div>
     </ThemeContext.Provider>
   );
 }

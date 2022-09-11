@@ -5,9 +5,8 @@ import { LogoIcon, MoonIcon, SunIcon } from "./assets/icons";
 
 const Header = () => {
   const { isDark, setIsDark } = useContext(ThemeContext);
-
   return (
-    <header className="header">
+    <header className={isDark ? "header" : "header-light"}>
       <div className="container">
         <div className="logo-wrapper">
           <Link to={"/"} className="logo">

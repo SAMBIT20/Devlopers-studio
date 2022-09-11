@@ -4,7 +4,9 @@
   --background-body: #22264a;
   --light-background-body: #efeff5;
   --background-content: #2e3360;
+  --light-background-content: rgba(239, 239, 245, 0.9);
   --text-color: #e5e5e5;
+  --light-text-color: #100f4d;
 }
 
 body {
@@ -14,6 +16,10 @@ body {
   font-family: "Maven Pro", sans-serif;
   background: var(--background-body);
   color: var(--text-color);
+}
+.light-body {
+  background: var(--light-background-body);
+  color: var(--light-text-color);
 }
 
 /* Global */
@@ -46,6 +52,17 @@ header.header {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   z-index: 10;
 }
+
+.header-light {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4.5rem;
+  background: var(--light-background-content);
+  box-shadow: rgb(0 0 0 / 10%) 0px 0.125rem 0.375rem 0px;
+  z-index: 10;
+}
 header .logo-wrapper {
   display: flex;
   align-items: center;
@@ -57,8 +74,8 @@ header .logo {
   align-items: center;
   cursor: default;
   text-decoration: none;
-  color: #fff;
   cursor: pointer;
+  color: #fff;
 }
 
 header .logo span {
@@ -91,8 +108,8 @@ header .logo span {
   padding-bottom: 10px;
   color: rgb(24, 244, 171);
 }
-.active{
-   font-size: 16px;
+.active {
+  font-size: 16px;
   line-height: 20px;
   margin-bottom: 5px;
   border-bottom: 1px solid rgb(168, 168, 168);
@@ -104,7 +121,7 @@ header .logo span {
 .side-bar {
   margin-top: 2rem;
   width: 20%;
-  border-right: 2px solid rgba(241, 241, 241, 0.18);
+  border-right: 2px solid rgba(91, 88, 88, 0.683);
   position: absolute;
   min-height: 100vh;
 }

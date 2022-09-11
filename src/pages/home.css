@@ -1,0 +1,9 @@
+.home-page {
+  margin: 4rem 0;
+  padding-top: 1rem;
+}
+
+.home-page a{
+    text-decoration: none;
+    color: #fff;
+}
