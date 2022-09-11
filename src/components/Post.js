@@ -1,4 +1,5 @@
 import Markdown from "markdown-to-jsx";
+
 import { useContext, useEffect, useState } from "react";
 import Code from "./Code";
 import { ThemeContext } from "../App";
@@ -14,6 +15,8 @@ const Post = () => {
   const path = location.state?.path;
 
   const [activeArticle, setActiveArticle] = useState(firstBlog);
+
+  console.log(`../markdown/${path + "/" + activeArticle}`);
 
   useEffect(() => {
     import(`../markdown/${path + "/" + activeArticle}`).then((res) => {

@@ -108,3 +108,17 @@ export const react = [
     path: "scope.md",
   },
 ];
+
+
+export const cleanCode = [
+  {
+    id: 1,
+    title: "Introduction",
+    path: "introduction.md",
+  },
+  {
+    id: 2,
+    title: "How to install react applications",
+    path: "sam.md",
+  },
+];
