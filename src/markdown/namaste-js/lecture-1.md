@@ -2,7 +2,9 @@
 
 - Everything in JS happens inside the execution context. Imagine a sealed-off container inside which JS runs.
   It is an abstract concept that hold info about the env. within the current code is being executed.
-  ![Execution Context](./assets/execution-context.jpg "Execution Context")
+
+  ![Execution Context](https://raw.githubusercontent.com/ZETRACX/devloper-studio-assets/main/assets/execution-context.jpg "Execution Context")
+
 
 
 
