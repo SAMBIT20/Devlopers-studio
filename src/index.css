@@ -1,0 +1,108 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
+:root {
+  --background-body: #22264A;
+  --light-background-body: #EFEFF5;
+  --background-content: #2e3360;
+  --text-color: #e5e5e5;
+}
+
+body {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  font-family: 'Maven Pro', sans-serif;
+  background: var(--background-body);
+  color: var(--text-color);
+}
+
+/* Global */
+svg {
+  width: 1.5rem;
+}
+button.icon {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.container {
+  max-width: 50rem;
+  margin: 0 auto;
+  padding: 0 0.5rem 0 0.5rem;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+/* header */
+header.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4.5rem;
+  background: var(--background-content);
+  box-shadow: 0 1px 1px rgba(0,0,0, 0.3);
+  z-index: 10;
+}
+header .logo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+header .logo {
+  display: flex;
+  align-items: center;
+  cursor: default;
+}
+header .logo span {
+  margin-left: 0.5rem;
+}
+
+/* Post */
+.article {
+  margin: 4rem 0;
+}
+.post-wrapper {
+  width: 100%;
+}
+
+/* Code */
+.code {
+  position: relative;
+}
+.code .copy-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 5;
+}
+
+
+/* sidebar */
+.side-bar-title{
+  text-align: center;
+  border-bottom: 2px solid rgba(230, 230, 230, 0.953);
+  padding-bottom: 10px;
+  color: rgb(24, 244, 171);
+}
+
+.side-bar{
+  margin-top: 2rem;
+  width: 20%;
+  border-right: 2px solid rgba(241, 241, 241, 0.18);
+  position: absolute;
+  min-height: 100vh;
+}
+
+.side-bar-content{
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid rgb(168, 168, 168);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+}
