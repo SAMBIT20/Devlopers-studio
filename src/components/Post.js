@@ -7,18 +7,21 @@ import { useLocation } from "react-router-dom";
 const Post = () => {
   const [postContent, setPostContent] = useState("");
   const { isDark } = useContext(ThemeContext);
-  const [activeArticle, setActiveArticle] = useState("scope.md");
   const location = useLocation();
   const data = location.state?.data;
+  const firstBlog = data[0].path;
+  const path = location.state?.path;
+
+  const [activeArticle, setActiveArticle] = useState(firstBlog);
 
   useEffect(() => {
-    import(`../markdown/${activeArticle}`).then((res) => {
+    import(`../markdown/${path + "/" + activeArticle}`).then((res) => {
       fetch(res.default)
         .then((response) => response.text())
         .then((response) => setPostContent(response))
         .catch((err) => console.log(err));
     });
-  }, [activeArticle]);
+  }, [activeArticle, path]);
 
   return (
     <article className={isDark ? "article" : "article-light"}>

@@ -5,7 +5,7 @@ import "./home.css";
 const Home = () => {
   return (
     <div className="home-page">
-      <Link to={"/tutorials"} state={{ data: namstejs }}>
+      <Link to={"/tutorials"} state={{ data: namstejs, path: "namaste-js" }}>
         Nmase Js
       </Link>
       <br />

@@ -2,12 +2,12 @@ export const namstejs = [
   {
     id: 1,
     title: "Execution Context",
-    path: "article.md",
+    path: "lecture-1.md",
   },
   {
     id: 2,
     title: "How JS is executed & Call Stack",
-    path: "article.md",
+    path: "lecture-2.md",
   },
   {
     id: 3,
@@ -25,7 +25,6 @@ export const namstejs = [
     path: "scope.md",
   },
 ];
-
 
 export const react = [
   {
