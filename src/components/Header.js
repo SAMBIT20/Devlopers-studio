@@ -11,9 +11,7 @@ const Header = () => {
         <div className="logo-wrapper">
           <Link to={"/"} className="logo">
             <LogoIcon />
-            <span>
-              Devloperstudio
-            </span>
+            <span>DeveloperStudio</span>
           </Link>
           <button onClick={() => setIsDark(!isDark)} className="icon">
             {isDark ? <MoonIcon /> : <SunIcon />}

@@ -1,4 +1,4 @@
-.learningCardContainer{
+.learningCardContainer {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -68,6 +68,17 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+
+.card .contentBox .author {
+  position: absolute;
+  font-size: 16px;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.authorName {
+  font-family: "Courier New", Courier, monospace;
 }
 
 .card .contentBox .learn {
