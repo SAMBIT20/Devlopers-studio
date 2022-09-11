@@ -8,7 +8,7 @@ const LearningCard = () => {
     <div>
       <div className={styles.learningCardContainer}>
         {CardData.map((data) => (
-          <div className={styles.card}>
+          <div className={styles.card} key={data.id}>
             <div className={styles.imgBox}>
               <img
                 src={data.image}
@@ -20,8 +20,7 @@ const LearningCard = () => {
             <div className={styles.contentBox}>
               <h3>{data.name}</h3>
               <h2 className={styles.author}>
-                Author:{" "}
-                <span className={styles.authorName}>{data.author}</span>{" "}
+                Author: <span className={styles.authorName}>{data.author}</span>{" "}
               </h2>
               <Link
                 to={"/tutorials"}

@@ -11,7 +11,7 @@
 
 > 💡 JavaScript is synchronous, single threaded language. It can Just do one thing at a time, it has just one call-stack and it can execute one thing at a time. Whatever code we give to Javascript will be quickly executed by Javascript engine, it does not wait.
 
-```js
+<Code language="javascript">
 console.log("Namaste");
 console.log("JavaScript");
 console.log("Season 2");
@@ -20,11 +20,12 @@ console.log("Season 2");
 // Season 2
 
 // 💡 It is quickly printing because `Time, tide & Javascript waits for none.`
-```
+
+</Code>
 
 _But what if we have to delay execution of any line, we could utilize callback, How?_
 
-```js
+<Code language="javascript">
 console.log("Namaste");
 setTimeout(function () {
   console.log("JavaScript");
@@ -35,13 +36,13 @@ console.log("Season 2");
 // JavaScript
 
 // 💡 Here we are delaying the execution using callback approach of setTimeout.
-```
+</Code>
 
 ### 🛒 e-Commerce web app situation
 
 Assume a scenario of e-Commerce web, where one user is placing order, he has added items like, shoes, pants and kurta in cart and now he is placing order. So in backend the situation could look something like this.
 
-```js
+<Code language="javascript">
 const cart = ["shoes", "pants", "kurta"];
 // Two steps to place a order
 // 1. Create a Order
@@ -50,32 +51,33 @@ const cart = ["shoes", "pants", "kurta"];
 // It could look something like this:
 api.createOrder();
 api.proceedToPayment();
-```
+
+</Code>
 
 Assumption, once order is created then only we can proceed to payment, so there is a dependency. So How to manage this dependency.
 Callback can come as rescue, How?
 
-```js
+<Code language="javascript">
 api.createOrder(cart, function () {
   api.proceedToPayment();
 });
 // 💡 Over here `createOrder` api is first creating a order then it is responsible to call `api.proceedToPayment()` as part of callback approach.
-```
+</Code>
 
 To make it a bit complicated, what if after payment is done, you have to show Order summary by calling `api.showOrderSummary()` and now it has dependency on `api.proceedToPayment()`
 Now my code should look something like this:
 
-```js
+<Code language="javascript">
 api.createOrder(cart, function () {
   api.proceedToPayment(function () {
     api.showOrderSummary();
   });
 });
-```
+</Code>
 
 Now what if we have to update the wallet, now this will have a dependency over `showOrderSummary`
 
-```js
+<Code language="javascript">
 api.createOrder(cart, function () {
   api.proceedToPayment(function () {
     api.showOrderSummary(function () {
@@ -84,7 +86,7 @@ api.createOrder(cart, function () {
   });
 });
 // 💡 Callback Hell
-```
+</Code>
 
 When we have a large codebase and multiple apis and have dependency on each other, then we fall into callback hell.
 These codes are tough to maintain.
@@ -96,7 +98,7 @@ Till this point we are comfortable with concept of callback hell but now lets di
 
 Let's understand with the help of example code and comments:
 
-```js
+<Code language="javascript">
 api.createOrder(cart, function () {
   api.proceedToPayment();
 });
@@ -108,7 +110,7 @@ api.createOrder(cart, function () {
 // 💡 When we pass a function as a callback, basically we are dependant on our parent function that it is his responsibility to run that function. This is called `inversion of control` because we are dependant on that function. What if parent function stopped working, what if it was developed by another programmer or callback runs two times or never run at all.
 
 // 💡 In next session, we will see how we can fix such problems.
-```
+</Code>
 
 > 💡 Async programming in JavaScript exists because callback exits.
 
@@ -120,3 +122,4 @@ Watch Live On Youtube below:
 
 <a href="https://www.youtube.com/watch?v=yEKtJGha3yM&list=PLlasXeu85E9eWOpw9jxHOQyGMRiBZ60aX" target="_blank"><img src="https://img.youtube.com/vi/yEKtJGha3yM/0.jpg" width="750"
 alt="map, filter & reduce Youtube Link"/></a>
+</Code>

@@ -41,7 +41,7 @@ alt="Execution Context Youtube Link"/></a>
 
 - Let's consider the below example and its code execution steps:
 
-```js
+<Code language="javascript">
 var n = 2;
 function square(num) {
   var ans = num * num;
@@ -49,7 +49,7 @@ function square(num) {
 }
 var square2 = square(n);
 var square4 = square(4);
-```
+</Code>
 
 The very **first** thing which JS does is **memory creation phase**, so it goes to line one of above code snippet, and **allocates a memory space** for variable **'n'** and then goes to line two, and **allocates a memory space** for **function 'square'**. When allocating memory **for n it stores 'undefined'**, a special value for 'n'. **For 'square', it stores the whole code of the function inside its memory space.** Then, as square2 and square4 are variables as well, it allocates memory and stores 'undefined' for them, and this is the end of first phase i.e. memory creation phase.
 
@@ -92,14 +92,14 @@ alt="How JS is executed & Call Stack Youtube Link"/></a>
 
 - Let's observe the below code and it's explaination:
 
-```js
+<Code language="javascript">
 getName(); // Namaste Javascript
 console.log(x); // undefined
 var x = 7;
 function getName() {
   console.log("Namaste Javascript");
 }
-```
+</Code>
 
 - It should have been an outright error in many other languages, as it is not possible to even access something which is not even created (defined) yet But in JS, We know that in memory creation phase it assigns undefined and puts the content of function to function's memory. And in execution, it then executes whatever is asked. Here, as execution goes line by line and not after compiling, it could only print undefined and nothing else. This phenomenon, is not an error. However, if we remove var x = 7; then it gives error. Uncaught ReferenceError: x is not defined
 
@@ -107,25 +107,25 @@ function getName() {
 
 - So in previous lecture, we learnt that execution context gets created in two phase, so even before code execution, memory is created so in case of variable, it will be initialized as undefined while in case of function the whole function code is placed in the memory. Example:
 
-```js
+<Code language="javascript">
 getName(); // Namaste JavaScript
 console.log(x); // Uncaught Reference: x is not defined.
 console.log(getName); // f getName(){ console.log("Namaste JavaScript); }
 function getName() {
   console.log("Namaste JavaScript");
 }
-```
+</Code>
 
 - Now let's observe a different example and try to understand the output.
 
-```js
+<Code language="javascript">
 getName(); // Uncaught TypeError: getName is not a function
 console.log(getName);
 var getName = function () {
   console.log("Namaste JavaScript");
 };
 // The code won't execute as the first line itself throws an TypeError.
-```
+</Code>
 
 <hr>
 
@@ -142,22 +142,22 @@ alt="Hoisting Youtube Link"/></a>
 
 # Episode 4 : Functions and Variable Environments
 
-```js
+<Code language="javascript">
 var x = 1;
 a();
 b(); // we are calling the functions before defining them. This will work properly, as seen in Hoisting.
 console.log(x);
 
 function a() {
-  var x = 10; // local scope because of separate execution context
-  console.log(x);
+var x = 10; // local scope because of separate execution context
+console.log(x);
 }
 
 function b() {
-  var x = 100;
-  console.log(x);
+var x = 100;
+console.log(x);
 }
-```
+</Code>
 
 Outputs:
 
@@ -218,12 +218,12 @@ alt="Functions and Variable Environments Youtube Link"/></a>
 
 eg:
 
-```js
+<Code language="javascript">
 var x = 10;
 console.log(x); // 10
 console.log(this.x); // 10
 console.log(window.x); // 10
-```
+</Code>
 
 <hr>
 
@@ -250,12 +250,12 @@ alt="Shortest JS Program, window & this keyword Youtube Link"/></a>
 
 > When variable is declared but not assigned value, its current value is **undefined**. But when the variable itself is not declared but called in code, then it is **not defined**.
 
-```js
+<Code language="javascript">
 console.log(x); // undefined
 var x = 25;
 console.log(x); // 25
 console.log(a); // Uncaught ReferenceError: a is not defined
-```
+</Code>
 
 - JS is a **loosely typed / weakly typed** language. It doesn't attach variables to any datatype. We can say _var a = 5_, and then change the value to boolean _a = true_ or string _a = 'hello'_ later on.
 - **Never** assign _undefined_ to a variable manually. Let it happen on it's own accord.
@@ -279,7 +279,7 @@ alt="undefined vs not defined in JS Youtube Link"/></a>
 
 - Let's observe the below examples:
 
-```js
+<Code language="javascript">
 // CASE 1
 function a() {
   console.log(b); // 10
@@ -287,9 +287,9 @@ function a() {
 }
 var b = 10;
 a();
-```
+</Code>
 
-```js
+<Code language="javascript">
 // CASE 2
 function a() {
   c();
@@ -299,9 +299,9 @@ function a() {
 }
 var b = 10;
 a();
-```
+</Code>
 
-```js
+<Code language="javascript">
 // CASE 3
 function a() {
   c();
@@ -312,9 +312,9 @@ function a() {
 }
 var b = 10;
 a();
-```
+</Code>
 
-```js
+<Code language="javascript">
 // CASE 4
 function a() {
   var b = 10;
@@ -325,21 +325,21 @@ function a() {
 }
 a();
 console.log(b); // Error, Not Defined
-```
+</Code>
 
 - Let's try to understand the output in each of the cases above.
   - In **case 1**: function a is able to access variable b from Global scope.
   - In **case 2**: 10 is printed. It means that within nested function too, the global scope variable can be accessed.
   - In **case 3**: 100 is printed meaning local variable of the same name took precedence over a global variable.
   - In **case 4**: A function can access a global variable, but the global execution context can't access any local variable.
-    ```
+    </Code>
     To summarize the above points in terms of execution context:
     call_stack = [GEC, a(), c()]
     Now lets also assign the memory sections of each execution context in call_stack.
     c() = [[lexical environment pointer pointing to a()]]
     a() = [b:10, c:{}, [lexical environment pointer pointing to GEC]]
-    GEC =  [a:{},[lexical_environment pointer pointing to null]]
-    ```
+    GEC = [a:{},[lexical_environment pointer pointing to null]]
+    </Code>
     ![Lexical Scope Explaination](../assets/lexical.jpg "Lexical Scope")
     ![Lexical Scope Explaination](../assets/lexical2.jpg "Lexical Scope")
 
@@ -353,25 +353,25 @@ console.log(b); // Error, Not Defined
 
 - The process of going one by one to parent and checking for values is called scope chain or Lexcial environment chain.
 
-- ```js
+- <Code language="javascript">
   function a() {
     function c() {
       // logic here
     }
     c(); // c is lexically inside a
   } // a is lexically inside global execution
-  ```
+  </Code>
 
 - Lexical or Static scope refers to the accessibility of variables, functions and object based on phylical location in source code.
 
-  ```js
+  <Code language="javascript">
   Global {
       Outer {
           Inner
       }
   }
   // Inner is surrounded by lexical scope of Outer
-  ```
+  </Code>
 
 - **TLDR**; An inner function can access variables which are in outer functions even if inner function is nested deep. In any other case, a function can't access variables not in its scope.
 
@@ -392,7 +392,7 @@ alt="The Scope Chain, Scope & Lexical Environment Youtube Link"/></a>
 
 - let and const declarations are hoisted. But its different from **var**
 
-```js
+<Code language="javascript">
 console.log(a); // ReferenceError: Cannot access 'a' before initialization
 console.log(b); // prints undefined as expected
 let a = 10;
@@ -400,7 +400,7 @@ console.log(a); // 10
 var b = 15;
 console.log(window.a); // undefined
 console.log(window.b); // 15
-```
+</Code>
 
 It looks like let isn't hoisted, **but it is**, let's understand
 
@@ -417,17 +417,17 @@ It looks like let isn't hoisted, **but it is**, let's understand
 
 - **Syntax Error** doesn't even let us run single line of code.
 
-```js
+<Code language="javascript">
 let a = 10;
 let a = 100;  //this code is rejected upfront as SyntaxError. (duplicate declaration)
 ------------------
 let a = 10;
 var a = 100; // this code also rejected upfront as SyntaxError. (can't use same name in same scope)
-```
+</Code>
 
 - **Let** is a stricter version of **var**. Now, **const** is even more stricter than **let**.
 
-```js
+<Code language="javascript">
 let a;
 a = 10;
 console.log(a) // 10. Note declaration and assigning of a is in different lines.
@@ -438,7 +438,7 @@ console.log(b); // SyntaxError: Missing initializer in const declaration. (This 
 ------------------
 const b = 100;
 b = 1000; //this gives us TypeError: Assignment to constant variable.
-```
+</Code>
 
 - Types of **Error**: Syntax, Reference, and Type.
 
@@ -486,7 +486,7 @@ What is a **Block**?
 
 - Block aka _compound statement_ is used to group JS statements together into 1 group. We group them within {...}
 
-```js
+<Code language="javascript">
 {
   var a = 10;
   let b = 20;
@@ -494,11 +494,11 @@ What is a **Block**?
   // Here let and const are hoisted in Block scope,
   // While, var is hoisted in Global scope.
 }
-```
+</Code>
 
 - Block Scope and its accessibility example
 
-```js
+<Code language="javascript">
 {
   var a = 10;
   let b = 20;
@@ -506,7 +506,7 @@ What is a **Block**?
 }
 console.log(a); // 10
 console.log(b); // Uncaught ReferenceError: b is not defined
-```
+</Code>
 
     * Reason?
         * In the BLOCK SCOPE; we get b and c inside it initialized as *undefined* as a part of hoisting (in a seperate memory space called **block**)
@@ -516,7 +516,7 @@ console.log(b); // Uncaught ReferenceError: b is not defined
 
 What is **Shadowing**?
 
-```js
+<Code language="javascript">
 var a = 100;
 {
   var a = 10; // same name as global var
@@ -527,13 +527,13 @@ var a = 100;
   console.log(c); // 30
 }
 console.log(a); // 10, instead of the 100 we were expecting. So block "a" modified val of global "a" as well. In console, only b and c are in block space. a initially is in global space(a = 100), and when a = 10 line is run, a is not created in block space, but replaces 100 with 10 in global space itself.
-```
+</Code>
 
 - So, If one has same named variable outside the block, the variable inside the block _shadows_ the outside variable. **This happens only for var**
 
 - Let's observe the behaviour in case of let and const and understand it's reason.
 
-```js
+<Code language="javascript">
 let b = 100;
 {
   var a = 10;
@@ -542,13 +542,13 @@ let b = 100;
   console.log(b); // 20
 }
 console.log(b); // 100, Both b's are in separate spaces (one in Block(20) and one in Script(another arbitrary mem space)(100)). Same is also true for *const* declarations.
-```
+</Code>
 
 ![Block Scope Explaination](../assets/scope.jpg "Lexical Scope")
 
 - Same logic is true even for **functions**
 
-```js
+<Code language="javascript">
 const c = 100;
 function x() {
   const c = 10;
@@ -556,28 +556,28 @@ function x() {
 }
 x();
 console.log(c); // 100
-```
+</Code>
 
 What is **Illegal Shadowing**?
 
-```js
+<Code language="javascript">
 let a = 20;
 {
   var a = 20;
 }
 // Uncaught SyntaxError: Identifier 'a' has already been declared
-```
+</Code>
 
 - We cannot shadow let with var. But it is **valid** to shadow a let using a let. However, we can shadow var with let.
 - All scope rules that work in function are same in arrow functions too.
 - Since var is function scoped, it is not a problem with the code below.
 
-```js
+<Code language="javascript">
 let a = 20;
 function x() {
   var a = 20;
 }
-```
+</Code>
 
 <hr>
 
@@ -598,7 +598,7 @@ alt="Block Scope & Shadowing in JS Youtube Link"/></a>
 
 - JavaScript has a lexcial scope environment. If a function needs to access a variable, it first goes to its local memory. When it does not find it there, it goes to the memory of its lexical parent. See Below code, Over here function **y** along with its lexical scope i.e. (function x) would be called a closure.
 
-  ```js
+  <Code language="javascript">
   function x() {
     var a = 7;
     function y() {
@@ -608,7 +608,7 @@ alt="Block Scope & Shadowing in JS Youtube Link"/></a>
   }
   var z = x();
   console.log(z); // value of z is entire code of function y.
-  ```
+  </Code>
 
   - In above code, When y is returned, not only is the function returned but the entire closure (fun y + its lexical scope) is returned and put inside z. So when z is used somewhere else in program, it still remembers var a inside x()
 
@@ -649,7 +649,7 @@ alt="Closure in JS Youtube Link"/></a>
 
 > **Time, tide and Javascript wait for none.**
 
-```js
+<Code language="javascript">
 function x() {
   var i = 1;
   setTimeout(function () {
@@ -661,7 +661,7 @@ x();
 // Output:
 // Namaste Javascript
 // 1 // after waiting 3 seconds
-```
+</Code>
 
 - We expect JS to wait 3 sec, print 1 and then go down and print the string. But JS prints string immediately, waits 3 sec and then prints 1.
 - The function inside setTimeout forms a closure (remembers reference to i). So wherever function goes it carries this ref along with it.
@@ -672,7 +672,7 @@ x();
 
   We assume this has a simple approach as below
 
-  ```js
+  <Code language="javascript">
   function x() {
     for (var i = 1; i <= 5; i++) {
       setTimeout(function () {
@@ -689,7 +689,7 @@ x();
   // 6
   // 6
   // 6
-  ```
+  </Code>
 
   - Reason?
 
@@ -699,7 +699,7 @@ x();
 
   - But what if interviewer ask us to implement using **var**?
 
-    ```js
+    <Code language="javascript">
     function x() {
       for (var i = 1; i <= 5; i++) {
         function close(i) {
@@ -713,7 +713,7 @@ x();
       console.log("Namaste Javascript");
     }
     x();
-    ```
+    </Code>
 
 <hr>
 
@@ -735,7 +735,7 @@ alt="setTimeout + Closures Interview Question in JS Youtube Link"/></a>
 **Ans**: A function along with reference to its outer environment together forms a closure. Or in other words, A Closure is a combination of a function and its lexical scope bundled together.
 eg:
 
-```js
+<Code language="javascript">
 function outer() {
   var a = 10;
   function inner() {
@@ -744,11 +744,11 @@ function outer() {
   return inner;
 }
 outer()(); // 10 // over here first `()` will return inner function and then using secong `()` to call inner function
-```
+</Code>
 
 ### Q2: Will the below code still forms a closure?
 
-```js
+<Code language="javascript">
 function outer() {
   function inner() {
     console.log(a);
@@ -757,13 +757,13 @@ function outer() {
   return inner;
 }
 outer()(); // 10
-```
+</Code>
 
 **Ans**: Yes, because inner function forms a closure with its outer environment so sequence doesn't matter.
 
 ### Q3: Changing var to let, will it make any difference?
 
-```js
+<Code language="javascript">
 function outer() {
   let a = 10;
   function inner() {
@@ -772,13 +772,13 @@ function outer() {
   return inner;
 }
 outer()(); // 10
-```
+</Code>
 
 **Ans**: It will still behave the same way.
 
 ### Q4: Will inner function have the access to outer function argument?
 
-```js
+<Code language="javascript">
 function outer(str) {
   let a = 10;
   function inner() {
@@ -787,13 +787,13 @@ function outer(str) {
   return inner;
 }
 outer("Hello There")(); // 10 "Hello There"
-```
+</Code>
 
 **Ans**: Inner function will now form closure and will have access to both a and b.
 
 ### Q5: In below code, will inner form closure with **outest**?
 
-```js
+<Code language="javascript">
 function outest() {
   var c = 20;
   function outer(str) {
@@ -806,13 +806,13 @@ function outest() {
   return outer;
 }
 outest()("Hello There")(); // 10 20 "Hello There"
-```
+</Code>
 
 **Ans**: Yes, inner will have access to all its outer environment.
 
 ### Q6: Output of below code and explaination?
 
-```js
+<Code language="javascript">
 function outest() {
   var c = 20;
   function outer(str) {
@@ -826,7 +826,7 @@ function outest() {
 }
 let a = 100;
 outest()("Hello There")(); // 10 20 "Hello There"
-```
+</Code>
 
 **Ans**: Still the same output, the inner function will have reference to inner a, so conflicting name won't matter here. If it wouldn't have find a inside outer function then it would have went more outer to find a and thus have printed 100. So, it try to resolve variable in scope chain and if a wouldn't have been found it would have given reference error.
 
@@ -840,7 +840,7 @@ outest()("Hello There")(); // 10 20 "Hello There"
 
 ### Q8: Discuss more on Data hiding and encapsulation?
 
-```js
+<Code language="javascript">
 // without closures
 var count = 0;
 function increment(){
@@ -848,26 +848,26 @@ function increment(){
 }
 // in the above code, anyone can access count and change it.
 
-------------------------------------------------------------------
+---
 
 // (with closures) -> put everything into a function
 function counter() {
-  var count = 0;
-  function increment(){
-    count++;
-  }
+var count = 0;
+function increment(){
+count++;
+}
 }
 console.log(count); // this will give referenceError as count can't be accessed. So now we are able to achieve hiding of data
 
-------------------------------------------------------------------
+---
 
 //(increment with function using closure) true function
 function counter() {
-  var count = 0;
-  return function increment(){
-    count++;
-    console.log(count);
-  }
+var count = 0;
+return function increment(){
+count++;
+console.log(count);
+}
 }
 var counter1 = counter(); //counter function has closure with count var.
 counter1(); // increments counter
@@ -875,31 +875,32 @@ counter1(); // increments counter
 var counter2 = counter();
 counter2(); // here counter2 is whole new copy of counter function and it wont impack the output of counter1
 
-*************************
+---
 
 // Above code is not good and scalable for say, when you plan to implement decrement counter at a later stage.
-// To address this issue, we use *constructors*
+// To address this issue, we use _constructors_
 
 // Adding decrement counter and refactoring code:
 function Counter() {
 //constructor function. Good coding would be to capitalize first letter of constructor function.
-  var count = 0;
-  this.incrementCounter = function() { //anonymous function
-    count++;
-    console.log(count);
-  }
-   this.decrementCounter = function() {
-    count--;
-    console.log(count);
-  }
+var count = 0;
+this.incrementCounter = function() { //anonymous function
+count++;
+console.log(count);
+}
+this.decrementCounter = function() {
+count--;
+console.log(count);
+}
 }
 
-var counter1 = new Counter();  // new keyword for constructor fun
+var counter1 = new Counter(); // new keyword for constructor fun
 counter1.incrementCounter();
 counter1.incrementCounter();
 counter1.decrementCounter();
 // returns 1 2 1
-```
+
+</Code>
 
 ### Q9: Disadvantage of closure?
 
@@ -908,7 +909,7 @@ So when creating many closures, more memory is accumulated and this can create m
 
 **Garbage collector** : Program in JS engine or browser that frees up unused memory. In highlevel languages like C++ or JAVA, garbage collection is left to the programmer, but in JS engine its done implicitly.
 
-```js
+<Code language="javascript">
 function a() {
   var x = 0;
   return function b() {
@@ -920,7 +921,7 @@ var y = a(); // y is a copy of b()
 y();
 
 // Once a() is called, its element x should be garbage collected ideally. But fun b has closure over var x. So mem of x cannot be freed. Like this if more closures formed, it becomes an issue. To tacke this, JS engines like v8 and Chrome have smart garbage collection mechanisms. Say we have var x = 0, z = 10 in above code. When console log happens, x is printed as 0 but z is removed automatically.
-```
+</Code>
 
 <hr>
 
@@ -943,29 +944,29 @@ alt="Closures Interview Question in JS Youtube Link"/></a>
 
 Below way of creating function are function statement.
 
-```js
+<Code language="javascript">
 function a() {
   console.log("Hello");
 }
 a(); // Hello
-```
+</Code>
 
 ### Q: What is Function Expression?
 
 Assigning a function to a variable. Function acts like a value.
 
-```js
+<Code language="javascript">
 var b = function () {
   console.log("Hello");
 };
 b();
-```
+</Code>
 
 ### Q: Difference between function statement and expression
 
 The major difference between these two lies in **Hoisting**.
 
-```js
+<Code language="javascript">
 a(); // "Hello A"
 b(); // TypeError
 function a() {
@@ -975,7 +976,7 @@ var b = function () {
   console.log("Hello B");
 };
 // Why? During mem creation phase a is created in memory and function assigned to a. But b is created like a variable (b:undefined) and until code reaches the function()  part, it is still undefined. So it cannot be called.
-```
+</Code>
 
 ### Q: What is Function Declaration?
 
@@ -985,11 +986,12 @@ Other name for **function statement**.
 
 A function without a name.
 
-```js
+<Code language="javascript">
 function () {
 
 }// this is going to throw Syntax Error - Function Statement requires function name.
-```
+
+</Code>
 
 - They don't have their own identity. So an anonymous function without code inside it results in an error.
 - Anonymous functions are used when functions are used as values eg. the code sample for **function expression** above.
@@ -998,31 +1000,31 @@ function () {
 
 Same as Function Expression but function has a name instead of being anonymous.
 
-```js
+<Code language="javascript">
 var b = function xyz() {
   console.log("b called");
 };
 b(); // "b called"
 xyz(); // Throws ReferenceError:xyz is not defined.
 // xyz function is not created in global scope. So it can't be called.
-```
+</Code>
 
 ### Q: Parameters vs Arguments?
 
-```js
+<Code language="javascript">
 var b = function (param1, param2) {
   // labels/identifiers are parameters
   console.log("b called");
 };
 b(arg1, arg2); // arguments - values passed inside function call
-```
+</Code>
 
 ### Q: What is First Class Function aka First Class Citizens?
 
 We can pass functions inside a function as arguments and
 /or return a function(HOF). These ability are altogether known as First class function. It is programming concept available in some other languages too.
 
-```js
+<Code language="javascript">
 var b = function (param1) {
   console.log(param1); // prints " f() {} "
 };
@@ -1030,17 +1032,18 @@ b(function () {});
 
 // Other way of doing the same thing:
 var b = function (param1) {
-  console.log(param1);
+console.log(param1);
 };
 function xyz() {}
 b(xyz); // same thing as prev code
 
 // we can return a function from a function:
 var b = function (param1) {
-  return function () {};
+return function () {};
 };
 console.log(b()); //we log the entire fun within b.
-```
+
+</Code>
 
 <hr>
 
@@ -1061,15 +1064,15 @@ alt="First Class Functions ft. Anonymous Functions in JS Youtube Link"/></a>
 
 - Functions are first class citizens ie. take a function A and pass it to another function B. Here, A is a callback function. So basically I am giving access to function B to call function A. This callback function gives us the access to whole **Asynchronous** world in **Synchronous** world.
 
-```js
+<Code language="javascript">
 setTimeout(function () {
   console.log("Timer");
 }, 1000); // first argument is callback function and second is timer.
-```
+</Code>
 
 - JS is a synchronous and single threaded language. But due to callbacks, we can do async things in JS.
 
-```js
+<Code language="javascript">
 setTimeout(function () {
   console.log("timer");
 }, 5000);
@@ -1081,14 +1084,14 @@ x(function y() {
   console.log("y");
 });
 // x y timer
-```
+</Code>
 
 - In the call stack, first x and y are present. After code execution, they go away and stack is empty. Then after 5 seconds (from beginning) anonymous suddenly appear up in stack ie. setTimeout
 - All 3 functions are executed through call stack. If any operation blocks the call stack, its called blocking the main thread.
 - Say if x() takes 30 sec to run, then JS has to wait for it to finish as it has only 1 call stack/1 main thread. Never block main thread.
 - Always use **async** for functions that take time eg. setTimeout
 
-```js
+<Code language="javascript">
 // Another Example of callback
 function printStr(str, cb) {
   setTimeout(() => {
@@ -1104,46 +1107,47 @@ function printAll() {
   });
 }
 printAll(); // A B C // in order
-```
+</Code>
 
 ### Event Listener
 
 - We will create a button in html and attach event to it.
 
-```js
+<Code language="javascript">
 // index.html
 <button id="clickMe">Click Me!</button>;
 
 // in index.js
 document.getElementById("clickMe").addEventListener("click", function xyz() {
-  //when event click occurs, this callback function (xyz) is called into callstack
-  console.log("Button clicked");
+//when event click occurs, this callback function (xyz) is called into callstack
+console.log("Button clicked");
 });
-```
+
+</Code>`
 
 - Lets implement a increment counter button.
   - Using global variable (not good as anyone can change it)
-    ```js
+    <Code language="javascript">
     let count = 0;
     document
-      .getElementById("clickMe")
-      .addEventListener("click", function xyz() {
-        console.log("Button clicked", ++count);
-      });
-    ```
+    .getElementById("clickMe")
+    .addEventListener("click", function xyz() {
+    console.log("Button clicked", ++count);
+    });
+    </Code>
   - Use closures for data abstraction
-    ```js
+    <Code language="javascript">
     function attachEventList() {
-      //creating new function for closure
-      let count = 0;
-      document
-        .getElementById("clickMe")
-        .addEventListener("click", function xyz() {
-          console.log("Button clicked", ++count); //now callback function forms closure with outer scope(count)
-        });
+    //creating new function for closure
+    let count = 0;
+    document
+    .getElementById("clickMe")
+    .addEventListener("click", function xyz() {
+    console.log("Button clicked", ++count); //now callback function forms closure with outer scope(count)
+    });
     }
     attachEventList();
-    ```
+    </Code>
     ![Event Listerner Demo](../assets/event.jpg)
 
 ### Garbage Collection and removeEventListeners
@@ -1190,14 +1194,14 @@ None of the below are part of Javascript! These are extra superpowers that brows
 
 - Let's undertand the below code image and its explaination:
   ![Event Loop 3 Demo](../assets/eventloop3.jpg)
-  - ```js
+  - <Code language="javascript">
     console.log("start");
     setTimeout(function cb() {
       console.log("timer");
     }, 5000);
     console.log("end");
     // start end timer
-    ```
+    </Code>
   - First a GEC is created and put inside call stack.
   - console.log("Start"); // this calls the console web api (through window) which in turn actually modifies values in console.
   - setTimeout(function cb() { //this calls the setTimeout web api which gives access to timer feature. It stores the callback cb() and starts timer. console.log("Callback");}, 5000);
@@ -1220,15 +1224,15 @@ See the below Image and code and try to understand the reason:
 ![Event Loop 5 Demo](../assets/eventloop5.jpg)
 Explaination?
 
-- ```js
-  console.log("Start");
-  document.getElementById("btn").addEventListener("click", function cb() {
-    // cb() registered inside webapi environment and event(click) attached to it. i.e. REGISTERING CALLBACK AND ATTACHING EVENT TO IT.
-    console.log("Callback");
-  });
-  console.log("End"); // calls console api and logs in console window. After this GEC get removed from call stack.
-  // In above code, even after console prints "Start" and "End" and pops GEC out, the eventListener stays in webapi env(with hope that user may click it some day) until explicitly removed, or the browser is closed.
-  ```
+- <Code language="javascript">
+    console.log("Start");
+    document.getElementById("btn").addEventListener("click", function cb() {
+      // cb() registered inside webapi environment and event(click) attached to it. i.e. REGISTERING CALLBACK AND ATTACHING EVENT TO IT.
+      console.log("Callback");
+    });
+    console.log("End"); // calls console api and logs in console window. After this GEC get removed from call stack.
+    // In above code, even after console prints "Start" and "End" and pops GEC out, the eventListener stays in webapi env(with hope that user may click it some day) until explicitly removed, or the browser is closed.
+  </Code>`
 
 - Eventloop has just one job to keep checking callback queue and if found something push it to call stack and delete from callback queue.
 
@@ -1242,7 +1246,7 @@ Q: Need of callback queue?
 
 Let's observe the code below and try to understand
 
-```js
+<Code language="javascript">
 console.log("Start"); // this calls the console web api (through window) which in turn actually modifies values in console.
 setTimeout(function cbT() {
   console.log("CB Timeout");
@@ -1254,16 +1258,18 @@ fetch("https://api.netflix.com").then(function cbF() {
 console.log("End");
 
 Code Explaination:
-* Same steps for everything before fetch() in above code.
-* fetch registers cbF into webapi environment along with existing cbT.
-* cbT is waiting for 5000ms to end so that it can be put inside callback queue. cbF is waiting for data to be returned from Netflix servers gonna take 2 seconds.
-* After this millions of lines of code is running, by the time millions line of code will execute, 5 seconds has finished and now the timer has expired and response from Netflix server is ready.
-* Data back from cbF ready to be executed gets stored into something called a Microtask Queue.
-* Also after expiration of timer, cbT is ready to execute in Callback Queue.
-* Microtask Queue is exactly same as Callback Queue, but it has higher priority. Functions in Microtask Queue are executed earlier than Callback Queue.
-* In console, first Start and End are printed in console. First cbF goes in callstack and "CB Netflix" is printed. cbF popped from callstack. Next cbT is removed from callback Queue, put in Call Stack, "CB Timeout" is printed, and cbT removed from callstack.
-* See below Image for more understanding
-```
+
+- Same steps for everything before fetch() in above code.
+- fetch registers cbF into webapi environment along with existing cbT.
+- cbT is waiting for 5000ms to end so that it can be put inside callback queue. cbF is waiting for data to be returned from Netflix servers gonna take 2 seconds.
+- After this millions of lines of code is running, by the time millions line of code will execute, 5 seconds has finished and now the timer has expired and response from Netflix server is ready.
+- Data back from cbF ready to be executed gets stored into something called a Microtask Queue.
+- Also after expiration of timer, cbT is ready to execute in Callback Queue.
+- Microtask Queue is exactly same as Callback Queue, but it has higher priority. Functions in Microtask Queue are executed earlier than Callback Queue.
+- In console, first Start and End are printed in console. First cbF goes in callstack and "CB Netflix" is printed. cbF popped from callstack. Next cbT is removed from callback Queue, put in Call Stack, "CB Timeout" is printed, and cbT removed from callstack.
+- See below Image for more understanding
+
+</Code>
 
 ![Event Loop 6 Demo](../assets/eventloop6.jpg)
 Microtask Priority Visualization
@@ -1358,27 +1364,27 @@ alt="JS Engine Exposed, Google's V8 Architecture in JS Youtube Link"/></a>
 
 - Let's observe the below code and it's explaination
 
-  ```js
-  console.log("Start");
-  setTimeout(function cb() {
-    console.log("Callback");
-  }, 5000);
-  console.log("End");
-  // Millions of lines of code to execute
+    <Code language="javascript">
+    console.log("Start");
+    setTimeout(function cb() {
+      console.log("Callback");
+    }, 5000);
+    console.log("End");
+    // Millions of lines of code to execute
 
   // o/p: Over here setTimeout exactly doesn't guarantee that the callback function will be called exactly after 5s. Maybe 6,7 or even 10! It all depends on callstack. Why?
-  ```
+  </Code>
 
-  Reason?
+Reason?
 
-  - First GEC is created and pushed in callstack.
-  - Start is printed in console
-  - When setTimeout is seen, callback function is registered into webapi's env. And timer is attached to it and started. callback waits for its turn to be execeuted once timer expires. But JS waits for none. Goes to next line.
-  - End is printed in console.
-  - After "End", we have 1 million lines of code that takes 10 sec(say) to finish execution. So GEC won't pop out of stack. It runs all the code for 10 sec.
-  - But in the background, the timer runs for 5s. While callstack runs the 1M line of code, this timer has already expired and callback fun has been pushed to Callback queue and waiting to pushed to callstack to get executed.
-  - Event loop keeps checking if callstack is empty or not. But here GEC is still in stack so cb can't be popped from callback Queue and pushed to CallStack. **Though setTimeout is only for 5s, it waits for 10s until callstack is empty before it can execute** (When GEC popped after 10sec, callstack() is pushed into call stack and immediately executed (Whatever is pushed to callstack is executed instantly).
-  - This is called as the **[Concurrency model](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)** of JS. This is the logic behind setTimeout's trust issues.
+- First GEC is created and pushed in callstack.
+- Start is printed in console
+- When setTimeout is seen, callback function is registered into webapi's env. And timer is attached to it and started. callback waits for its turn to be execeuted once timer expires. But JS waits for none. Goes to next line.
+- End is printed in console.
+- After "End", we have 1 million lines of code that takes 10 sec(say) to finish execution. So GEC won't pop out of stack. It runs all the code for 10 sec.
+- But in the background, the timer runs for 5s. While callstack runs the 1M line of code, this timer has already expired and callback fun has been pushed to Callback queue and waiting to pushed to callstack to get executed.
+- Event loop keeps checking if callstack is empty or not. But here GEC is still in stack so cb can't be popped from callback Queue and pushed to CallStack. **Though setTimeout is only for 5s, it waits for 10s until callstack is empty before it can execute** (When GEC popped after 10sec, callstack() is pushed into call stack and immediately executed (Whatever is pushed to callstack is executed instantly).
+- This is called as the **[Concurrency model](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)** of JS. This is the logic behind setTimeout's trust issues.
 
 - The First rule of JavaScript: Do not **block the main thread** (as JS is a single threaded(only 1 callstack) language).
 
@@ -1390,16 +1396,18 @@ alt="JS Engine Exposed, Google's V8 Architecture in JS Youtube Link"/></a>
 - JS is a synchronous single threaded language. With just 1 thread it runs all pieces of code. It becomes kind of an interpreter language, and runs code very fast inside browser (no need to wait for code to be compiled) (JIT - Just in time compilation). And there are still ways to do async operations as well.
 
 - What if **timeout = 0sec**?
-  ```js
+  <Code language="javascript">
   console.log("Start");
   setTimeout(function cb() {
-    console.log("Callback");
+  console.log("Callback");
   }, 0);
   console.log("End");
   // Even though timer = 0s, the cb() has to go through the queue. Registers calback in webapi's env , moves to callback queue, and execute once callstack is empty.
   // O/p - Start End Callback
   // This method of putting timer = 0, can be used to defer a less imp function by a little so the more important function(here printing "End") can take place
-  ```
+  </Code>
+
+  </Code>
 
 <hr>
 
@@ -1420,7 +1428,7 @@ alt="Trust issues with setTimeout() in JS Youtube Link"/></a>
 
 **Ans**: A Higher-order functions are functions that take other functions as arguments or return functions as their results. Eg:
 
-```js
+<Code language="javascript">
 function x() {
     console.log("Hi)";
 };
@@ -1430,14 +1438,14 @@ function y(x) {
 y(); // Hi
 // y is a higher order function
 // x is a callback function
-```
+</Code>
 
 Let's try to understand how we should approach solution in interview.
 I have an array of radius and I have to calculate area using these radius and store in an array.
 
 First Approach:
 
-```js
+<Code language="javascript">
 const radius = [1, 2, 3, 4];
 const calculateArea = function (radius) {
   const output = [];
@@ -1447,11 +1455,11 @@ const calculateArea = function (radius) {
   return output;
 };
 console.log(calculateArea(radius));
-```
+</Code>
 
 The above solution works perfectly fine but what if we have now requirement to calculate array of circumference. Code now be like
 
-```js
+<Code language="javascript">
 const radius = [1, 2, 3, 4];
 const calculateCircumference = function (radius) {
   const output = [];
@@ -1461,29 +1469,29 @@ const calculateCircumference = function (radius) {
   return output;
 };
 console.log(calculateCircumference(radius));
-```
+</Code>
 
 But over here we are violating some principle like DRY Principle, now lets observe the better approach.
 
-```js
+<Code language="javascript">
 const radiusArr = [1, 2, 3, 4];
 
 // logic to calculate area
 const area = function (radius) {
-    return Math.PI * radius * radius;
+return Math.PI _ radius _ radius;
 }
 
 // logic to calculate circumference
 const circumference = function (radius) {
-    return 2 * Math.PI * radius;
+return 2 _ Math.PI _ radius;
 }
 
 const calculate = function(radiusArr, operation) {
-    const output = [];
-    for (let i = 0; i < radiusArr.length; i++) {
-        output.push(operation(radiusArr[i]));
-    }
-    return output;
+const output = [];
+for (let i = 0; i < radiusArr.length; i++) {
+output.push(operation(radiusArr[i]));
+}
+return output;
 }
 console.log(calculate(radiusArr, area));
 console.log(calculate(radiusArr, circumference));
@@ -1494,18 +1502,20 @@ Polyfill of map
 // Over here calculate is nothing but polyfill of map function
 // console.log(radiusArr.map(area)) == console.log(calculate(radiusArr, area));
 
-***************************************************
+---
+
 Lets convert above calculate function as map function and try to use. So,
 
 Array.prototype.calculate = function(operation) {
-    const output = [];
-    for (let i = 0; i < this.length; i++) {
-        output.push(operation(this[i]));
-    }
-    return output;
+const output = [];
+for (let i = 0; i < this.length; i++) {
+output.push(operation(this[i]));
+}
+return output;
 }
 console.log(radiusArr.calculate(area))
-```
+
+</Code>
 
 <hr>
 
@@ -1530,7 +1540,7 @@ It is basically used to transform a array. The map() method creates a new array 
 
 const output = arr.map(_function_) // this _function_ tells map that what transformation I want on each element of array
 
-```js
+<Code language="javascript">
 const arr = [5, 1, 3, 2, 6];
 // Task 1: Double the array element: [10, 2, 6, 4, 12]
 function double(x) {
@@ -1538,9 +1548,9 @@ function double(x) {
 }
 const doubleArr = arr.map(double); // Internally map will run double function for each element of array and create a new array and returns it.
 console.log(doubleArr); // [10, 2, 6, 4, 12]
-```
+</Code>
 
-```js
+<Code language="javascript">
 // Task 2: Triple the array element
 const arr = [5, 1, 3, 2, 6];
 // Transformation logic
@@ -1549,9 +1559,9 @@ function triple(x) {
 }
 const tripleArr = arr.map(triple);
 console.log(tripleArr); // [15, 3, 9, 6, 18]
-```
+</Code>
 
-```js
+<Code language="javascript">
 // Task 3: Convert array elements to binary
 const arr = [5, 1, 3, 2, 6];
 // Transformation logic:
@@ -1562,12 +1572,13 @@ const binaryArr = arr.map(binary);
 
 // The above code can be rewritten as :
 const binaryArr = arr.map(function binary(x) {
-	return x.toString(2);
+return x.toString(2);
 }
 
 // OR -> Arrow function
 const binaryArr = arr.map((x) => x.toString(2));
-```
+
+</Code>
 
 So basically map function is mapping each and every value and transforming it based on given condition.
 
@@ -1575,7 +1586,7 @@ So basically map function is mapping each and every value and transforming it ba
 
 Filter function is basically used to filter the value inside an array. The arr.filter() method is used to create a new array from a given array consisting of only those elements from the given array which satisfy a condition set by the argument method.
 
-```js
+<Code language="javascript">
 const array = [5, 1, 3, 2, 6];
 // filter odd values
 function isOdd(x) {
@@ -1585,7 +1596,7 @@ const oddArr = array.filter(isOdd); // [5,1,3]
 
 // Other way of writing the above:
 const oddArr = arr.filter((x) => x % 2);
-```
+</Code>
 
 Filter function creates an array and store only those values which evaluates to true.
 
@@ -1593,7 +1604,7 @@ Filter function creates an array and store only those values which evaluates to 
 
 It is a function which take all the values of array and gives a single output of it. It reduces the array to give a single output.
 
-```js
+<Code language="javascript">
 const array = [5, 1, 3, 2, 6];
 // Calculate sum of elements of array - Non functional programming way
 function findSum(arr) {
@@ -1607,16 +1618,17 @@ console.log(findSum(array)); // 17
 
 // reduce function way
 const sumOfElem = arr.reduce(function (accumulator, current) {
-  // current represent the value of array
-  // accumulator is used the result from element of array.
-  // In comparison to previous code snippet, *sum* variable is *accumulator* and *arr[i]* is *current*
-  accumulator = accumulator + current;
-  return accumulator;
+// current represent the value of array
+// accumulator is used the result from element of array.
+// In comparison to previous code snippet, _sum_ variable is _accumulator_ and _arr[i]_ is _current_
+accumulator = accumulator + current;
+return accumulator;
 }, 0); //In above example sum was initialized with 0, so over here accumulator also needs to be initialized, so the second argument to reduce function represent the initialization value.
 console.log(sumOfElem); // 17
-```
 
-```js
+</Code>
+
+<Code language="javascript">
 // find max inside array: Non functional programming way:
 const array = [5, 1, 3, 2, 6];
 function findMax(arr) {
@@ -1632,27 +1644,27 @@ console.log(findMax(array)); // 6
 
 // using reduce
 const output = arr.reduce((acc, current) => {
-	if (current > acc ) {
-		acc = current;
-	}
-	return acc;
+if (current > acc ) {
+acc = current;
+}
+return acc;
 }, 0);
 console.log(output); // 6
 
 // acc is just a label which represent the accumulated value till now,
 // so we can also label it as max in this case
 const output = arr.reduce((max, current) => {
-	if (current > max) {
-		max= current;
-	}
-	return max;
+if (current > max) {
+max= current;
+}
+return max;
 }, 0);
 console.log(output); // 6
-```
+</Code>
 
 ## Tricky MAP
 
-```js
+<Code language="javascript">
 const users = [
 	{ firstName: "Alok", lastName: "Raj", age: 23 },
 	{ firstName: "Ashish", lastName: "Kumar", age: 29 },
@@ -1663,25 +1675,26 @@ const users = [
 const fullNameArr = users.map((user) => user.firstName + " " + user.lastName);
 console.log(fullNameArr); // ["Alok Raj", "Ashish Kumar", ...]
 
-----------------------------------------------------------
+---
 
 // Get the count/report of how many unique people with unique age are there
 // like: {29 : 2, 75 : 1, 50 : 1}
 // We should use reduce, why? we want to deduce some information from the array. Basically we want to get a single object as output
 const report = users.reduce((acc, curr) => {
-	if(acc[curr.age]) {
-		acc[curr.age] = ++ acc[curr.age] ;
-	} else {
-		acc[curr.age] = 1;
-	}
-	return acc;  //to every time return update object
+if(acc[curr.age]) {
+acc[curr.age] = ++ acc[curr.age] ;
+} else {
+acc[curr.age] = 1;
+}
+return acc; //to every time return update object
 }, {})
 console.log(report) // {29 : 2, 75 : 1, 50 : 1}
-```
+
+</Code>
 
 ## Function Chaining
 
-```js
+<Code language="javascript">
 // First name of all people whose age is less than 30
 const users = [
   { firstName: "Alok", lastName: "Raj", age: 23 },
@@ -1692,19 +1705,19 @@ const users = [
 
 // function chaining
 const output = users
-  .filter((user) => user.age < 30)
-  .map((user) => user.firstName);
+.filter((user) => user.age < 30)
+.map((user) => user.firstName);
 console.log(output); // ["Alok", "Ashish", "Ankit"]
 
 // Homework challenge: Implement the same logic using reduce
 const output = users.reduce((acc, curr) => {
-  if (curr.age < 30) {
-    acc.push(curr.firstName);
-  }
-  return acc;
+if (curr.age < 30) {
+acc.push(curr.firstName);
+}
+return acc;
 }, []);
 console.log(output); // ["Alok", "Ashish", "Ankit"]
-```
+</Code>
 
 <hr>
 
@@ -1732,7 +1745,7 @@ alt="map, filter & reduce Youtube Link"/></a>
 
 > 💡 JavaScript is synchronous, single threaded language. It can Just do one thing at a time, it has just one call-stack and it can execute one thing at a time. Whatever code we give to Javascript will be quickly executed by Javascript engine, it does not wait.
 
-```js
+<Code language="javascript">
 console.log("Namaste");
 console.log("JavaScript");
 console.log("Season 2");
@@ -1741,11 +1754,12 @@ console.log("Season 2");
 // Season 2
 
 // 💡 It is quickly printing because `Time, tide & Javascript waits for none.`
-```
+
+</Code>
 
 _But what if we have to delay execution of any line, we could utilize callback, How?_
 
-```js
+<Code language="javascript">
 console.log("Namaste");
 setTimeout(function () {
   console.log("JavaScript");
@@ -1756,13 +1770,13 @@ console.log("Season 2");
 // JavaScript
 
 // 💡 Here we are delaying the execution using callback approach of setTimeout.
-```
+</Code>
 
 ### 🛒 e-Commerce web app situation
 
 Assume a scenario of e-Commerce web, where one user is placing order, he has added items like, shoes, pants and kurta in cart and now he is placing order. So in backend the situation could look something like this.
 
-```js
+<Code language="javascript">
 const cart = ["shoes", "pants", "kurta"];
 // Two steps to place a order
 // 1. Create a Order
@@ -1771,32 +1785,33 @@ const cart = ["shoes", "pants", "kurta"];
 // It could look something like this:
 api.createOrder();
 api.proceedToPayment();
-```
+
+</Code>
 
 Assumption, once order is created then only we can proceed to payment, so there is a dependency. So How to manage this dependency.
 Callback can come as rescue, How?
 
-```js
+<Code language="javascript">
 api.createOrder(cart, function () {
   api.proceedToPayment();
 });
 // 💡 Over here `createOrder` api is first creating a order then it is responsible to call `api.proceedToPayment()` as part of callback approach.
-```
+</Code>
 
 To make it a bit complicated, what if after payment is done, you have to show Order summary by calling `api.showOrderSummary()` and now it has dependency on `api.proceedToPayment()`
 Now my code should look something like this:
 
-```js
+<Code language="javascript">
 api.createOrder(cart, function () {
   api.proceedToPayment(function () {
     api.showOrderSummary();
   });
 });
-```
+</Code>
 
 Now what if we have to update the wallet, now this will have a dependency over `showOrderSummary`
 
-```js
+<Code language="javascript">
 api.createOrder(cart, function () {
   api.proceedToPayment(function () {
     api.showOrderSummary(function () {
@@ -1805,7 +1820,7 @@ api.createOrder(cart, function () {
   });
 });
 // 💡 Callback Hell
-```
+</Code>
 
 When we have a large codebase and multiple apis and have dependency on each other, then we fall into callback hell.
 These codes are tough to maintain.
@@ -1817,7 +1832,7 @@ Till this point we are comfortable with concept of callback hell but now lets di
 
 Let's understand with the help of example code and comments:
 
-```js
+<Code language="javascript">
 api.createOrder(cart, function () {
   api.proceedToPayment();
 });
@@ -1829,7 +1844,8 @@ api.createOrder(cart, function () {
 // 💡 When we pass a function as a callback, basically we are dependant on our parent function that it is his responsibility to run that function. This is called `inversion of control` because we are dependant on that function. What if parent function stopped working, what if it was developed by another programmer or callback runs two times or never run at all.
 
 // 💡 In next session, we will see how we can fix such problems.
-```
+
+</Code>
 
 > 💡 Async programming in JavaScript exists because callback exits.
 
@@ -1847,3 +1863,4 @@ alt="map, filter & reduce Youtube Link"/></a>
 <br>
 
 To Be Continued...
+</Code>

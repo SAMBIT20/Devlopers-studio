@@ -33,6 +33,7 @@ const Post = () => {
         <h3 className="side-bar-title">All Topics 👨🏻‍💻</h3>
         {data.map((data) => (
           <div
+            key={data.id}
             onClick={() => setActiveArticle(`${data.path}`, setActive(data.id))}
             style={{ cursor: "pointer" }}
             className={active === data.id ? "active" : "side-bar-content"}

@@ -8,7 +8,7 @@ It is basically used to transform a array. The map() method creates a new array 
 
 const output = arr.map(_function_) // this _function_ tells map that what transformation I want on each element of array
 
-```js
+<Code language="javascript">
 const arr = [5, 1, 3, 2, 6];
 // Task 1: Double the array element: [10, 2, 6, 4, 12]
 function double(x) {
@@ -16,9 +16,9 @@ function double(x) {
 }
 const doubleArr = arr.map(double); // Internally map will run double function for each element of array and create a new array and returns it.
 console.log(doubleArr); // [10, 2, 6, 4, 12]
-```
+</Code>
 
-```js
+<Code language="javascript">
 // Task 2: Triple the array element
 const arr = [5, 1, 3, 2, 6];
 // Transformation logic
@@ -27,9 +27,9 @@ function triple(x) {
 }
 const tripleArr = arr.map(triple);
 console.log(tripleArr); // [15, 3, 9, 6, 18]
-```
+</Code>
 
-```js
+<Code language="javascript">
 // Task 3: Convert array elements to binary
 const arr = [5, 1, 3, 2, 6];
 // Transformation logic:
@@ -40,12 +40,13 @@ const binaryArr = arr.map(binary);
 
 // The above code can be rewritten as :
 const binaryArr = arr.map(function binary(x) {
-	return x.toString(2);
+return x.toString(2);
 }
 
 // OR -> Arrow function
 const binaryArr = arr.map((x) => x.toString(2));
-```
+
+</Code>
 
 So basically map function is mapping each and every value and transforming it based on given condition.
 
@@ -53,7 +54,7 @@ So basically map function is mapping each and every value and transforming it ba
 
 Filter function is basically used to filter the value inside an array. The arr.filter() method is used to create a new array from a given array consisting of only those elements from the given array which satisfy a condition set by the argument method.
 
-```js
+<Code language="javascript">
 const array = [5, 1, 3, 2, 6];
 // filter odd values
 function isOdd(x) {
@@ -63,7 +64,7 @@ const oddArr = array.filter(isOdd); // [5,1,3]
 
 // Other way of writing the above:
 const oddArr = arr.filter((x) => x % 2);
-```
+</Code>
 
 Filter function creates an array and store only those values which evaluates to true.
 
@@ -71,7 +72,7 @@ Filter function creates an array and store only those values which evaluates to 
 
 It is a function which take all the values of array and gives a single output of it. It reduces the array to give a single output.
 
-```js
+<Code language="javascript">
 const array = [5, 1, 3, 2, 6];
 // Calculate sum of elements of array - Non functional programming way
 function findSum(arr) {
@@ -85,16 +86,16 @@ console.log(findSum(array)); // 17
 
 // reduce function way
 const sumOfElem = arr.reduce(function (accumulator, current) {
-  // current represent the value of array
-  // accumulator is used the result from element of array.
-  // In comparison to previous code snippet, *sum* variable is *accumulator* and *arr[i]* is *current*
-  accumulator = accumulator + current;
-  return accumulator;
+// current represent the value of array
+// accumulator is used the result from element of array.
+// In comparison to previous code snippet, _sum_ variable is _accumulator_ and _arr[i]_ is _current_
+accumulator = accumulator + current;
+return accumulator;
 }, 0); //In above example sum was initialized with 0, so over here accumulator also needs to be initialized, so the second argument to reduce function represent the initialization value.
 console.log(sumOfElem); // 17
-```
+</Code>
 
-```js
+<Code language="javascript">
 // find max inside array: Non functional programming way:
 const array = [5, 1, 3, 2, 6];
 function findMax(arr) {
@@ -110,27 +111,27 @@ console.log(findMax(array)); // 6
 
 // using reduce
 const output = arr.reduce((acc, current) => {
-	if (current > acc ) {
-		acc = current;
-	}
-	return acc;
+if (current > acc ) {
+acc = current;
+}
+return acc;
 }, 0);
 console.log(output); // 6
 
 // acc is just a label which represent the accumulated value till now,
 // so we can also label it as max in this case
 const output = arr.reduce((max, current) => {
-	if (current > max) {
-		max= current;
-	}
-	return max;
+if (current > max) {
+max= current;
+}
+return max;
 }, 0);
 console.log(output); // 6
-```
+</Code>
 
 ## Tricky MAP
 
-```js
+<Code language="javascript">
 const users = [
 	{ firstName: "Alok", lastName: "Raj", age: 23 },
 	{ firstName: "Ashish", lastName: "Kumar", age: 29 },
@@ -141,26 +142,27 @@ const users = [
 const fullNameArr = users.map((user) => user.firstName + " " + user.lastName);
 console.log(fullNameArr); // ["Alok Raj", "Ashish Kumar", ...]
 
-----------------------------------------------------------
+---
 
 // Get the count/report of how many unique people with unique age are there
 // like: {29 : 2, 75 : 1, 50 : 1}
 // We should use reduce, why? we want to deduce some information from the array. Basically we want to get a single object as output
 const report = users.reduce((acc, curr) => {
-	if(acc[curr.age]) {
-		acc[curr.age] = ++ acc[curr.age] ;
-	} else {
-		acc[curr.age] = 1;
-	}
+if(acc[curr.age]) {
+acc[curr.age] = ++ acc[curr.age] ;
+} else {
+acc[curr.age] = 1;
+}
 
-	return acc;  //to every time return update object
+    return acc;  //to every time return update object
+
 }, {})
 console.log(report) // {29 : 2, 75 : 1, 50 : 1}
-```
+</Code>
 
 ## Function Chaining
 
-```js
+<Code language="javascript">
 // First name of all people whose age is less than 30
 const users = [
   { firstName: "Alok", lastName: "Raj", age: 23 },
@@ -171,19 +173,19 @@ const users = [
 
 // function chaining
 const output = users
-  .filter((user) => user.age < 30)
-  .map((user) => user.firstName);
+.filter((user) => user.age < 30)
+.map((user) => user.firstName);
 console.log(output); // ["Alok", "Ashish", "Ankit"]
 
 // Homework challenge: Implement the same logic using reduce
 const output = users.reduce((acc, curr) => {
-  if (curr.age < 30) {
-    acc.push(curr.firstName);
-  }
-  return acc;
+if (curr.age < 30) {
+acc.push(curr.firstName);
+}
+return acc;
 }, []);
 console.log(output); // ["Alok", "Ashish", "Ankit"]
-```
+</Code>
 
 <hr>
 

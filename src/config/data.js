@@ -109,16 +109,30 @@ export const react = [
   },
 ];
 
-
-export const cleanCode = [
+export const cleanjs = [
   {
     id: 1,
     title: "Introduction",
-    path: "introduction.md",
+    path: "intro.md",
   },
   {
     id: 2,
-    title: "How to install react applications",
-    path: "sam.md",
+    title: "Variables",
+    path: "variables.md",
+  },
+  {
+    id: 3,
+    title: "Functions",
+    path: "functions.md",
+  },
+  {
+    id: 4,
+    title: "Objects and Data Structures",
+    path: "objAndData.md",
+  },
+  {
+    id: 5,
+    title: "Classes",
+    path: "classes.md",
   },
 ];

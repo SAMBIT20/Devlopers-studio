@@ -1,4 +1,4 @@
-import { namstejs, react, cleanCode } from "./data";
+import { namstejs, react, cleanjs } from "./data";
 export const CardData = [
   {
     id: 1,
@@ -13,7 +13,7 @@ export const CardData = [
     id: 2,
     name: "React Interview Questions ",
     notes: react,
-    path: "",
+    path: "react-interviews",
     author: "Sam Nanda",
     image:
       "https://raw.githubusercontent.com/ZETRACX/devloper-studio-assets/main/icons/jotai.webp",
@@ -21,8 +21,8 @@ export const CardData = [
   {
     id: 3,
     name: "🛁 Clean Code JavaScript",
-    notes: cleanCode,
-    path: "clean-code",
+    notes: cleanjs,
+    path: "clean-js",
     author: "Ryan McDermott",
     image:
       "https://raw.githubusercontent.com/ZETRACX/devloper-studio-assets/main/icons/EGH_JSAsync_1000.webp",
